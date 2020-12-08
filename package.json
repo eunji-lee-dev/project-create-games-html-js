@@ -1,0 +1,16 @@
+{
+  "name": "fivdev",
+  "version": "1.0.0",
+  "description": "moteur de jeu video en js cote navigatur",
+  "main": "index.js",
+  "scripts": {
+    "test": "rundev"
+  },
+  "keywords": [
+    "game",
+    "engine",
+    "js"
+  ],
+  "author": "eunji.lee.dev@gmail.com",
+  "license": "ISC"
+}
