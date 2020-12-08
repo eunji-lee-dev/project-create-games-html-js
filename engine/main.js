@@ -1,5 +1,3 @@
-import {timer} from "./module";
-
 let ctx,
 	width,
 	height;
@@ -9,7 +7,7 @@ let lastClick = {
 	y: undefined
 }
 
-export function startGame() {
+function startGame() {
 	createCanvas();
 	loadImgs();
 	drawBackground();
@@ -56,3 +54,4 @@ function drawBackground() {
 		ctx.drawImage(image,0,0,800,500);
 	};
 }
+

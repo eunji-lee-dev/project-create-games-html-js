@@ -1,4 +1,4 @@
-// import {StartGame()} from 'engine/main';
+startGame();
 
 /*
 while(true){
