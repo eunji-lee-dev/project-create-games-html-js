@@ -6,5 +6,9 @@ const  playTime = document.querySelector(".play-time");
 const tileCount = 16;
 
 Array(tileCount).fill().forEach((_, i)=> {
-	console.log(i);
-})
+	const li = document.createElement("li");
+	li.setAttribute('data-index', i);
+	li.classList.add(`list${i}`);
+	console.log(li);
+	container.appendChild(li);
+});
