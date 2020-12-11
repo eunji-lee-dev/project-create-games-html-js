@@ -7,6 +7,12 @@ const tileCount = 16;
 
 let tiles = [];
 
+const dragged = {
+	el: null,
+	class: null,
+	index: null
+}
+
 SetGame();
 
 function SetGame() {
@@ -43,12 +49,13 @@ function mix(array) {
 //events
 
 container.addEventListener('dragstart',(e) => {
-	console.log(e);
+	dragged.el = e.target;
+	dragged.class = e.target.className;
+	dragged.index = [...e.target.parentNode.children].indexOf(e.target);
 })
 
 container.addEventListener('dragover',(e) => {
 	e.preventDefault();
-	console.log('over');
 })
 
 container.addEventListener('drop',(e) => {
