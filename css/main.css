@@ -1,0 +1,50 @@
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+:root {
+	--colorPrimary : crimson;
+	--colorSecondary: #fff;
+}
+
+.game {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-direction: column;
+}
+.play-time {
+	font-size: 3rem;
+	margin-top: 2rem;
+	color: var(--colorPrimary);
+}
+ul {
+	margin-top: 1rem;
+	list-style: none;
+	border: 2px solid var(--colorPrimary);
+	display: grid;
+	grid-template-columns: repeat(4, 1fr);
+}
+
+li {
+	width: 100px;
+	height: 100px;
+	color: var(--colorSecondary);
+	background: url("https://placeimg.com/400/400/any");
+}
+.start-button {
+	background: var(--colorPrimary);
+	color: var(--colorSecondary);
+	border: none;
+	padding: 1rem 2rem;
+	margin-top: 1rem;
+}
+
+.game-text {
+	position: absolute;
+	font-size: 45px;
+	color: olivedrab;
+	text-shadow: 1px 1px rgba(0,0,0,.5);
+	display: none;
+}
