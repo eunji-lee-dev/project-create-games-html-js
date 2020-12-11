@@ -13,15 +13,39 @@ const dragged = {
 	index: null
 }
 
-SetGame();
+let isPlaying = false;
+let timeInterval = null;
+let time = 0;
 
-function SetGame() {
+// FUNCTIONS
+function checkStatus() {
+	const currentList = [...container.children];
+	const unMatchedList = currentList.filter((child, index) => Number(child.getAttribute("data-index")) !== index);
+
+	if (unMatchedList.length === 0) {
+		gameText.style.display = "block";
+		isPlaying = false;
+		clearInterval(timeInterval)
+	}
+}
+
+function setGame() {
+	isPlaying = true;
+	time = 0;
+	container.innerHTML = "";
+	// gameText.style.display = "none";
+	clearInterval(timeInterval);
+	timeInterval = setInterval(()=> {
+		playTime.innerText = time;
+		time++;
+	},1000)
+
 	tiles = createImgTiles();
 	tiles.forEach(tile => container.appendChild(tile));
 	setTimeout(() => {
 		container.innerHTML = "";
 		mix(tiles).forEach(tile => container.appendChild(tile))
-	},2000);
+	},3000);
 }
 
 function createImgTiles() {
@@ -46,9 +70,13 @@ function mix(array) {
 	return array;
 }
 
+
+
 //events
 
 container.addEventListener('dragstart',(e) => {
+	if (isPlaying) return;
+
 	const obj = e.target;
 	dragged.el = obj;
 	dragged.class = obj.className;
@@ -77,4 +105,9 @@ container.addEventListener('drop',(e) => {
 		dragged.index > droppedIndex ? obj.before(dragged.el) : obj.after(dragged.el);
 		isLast ? originPlace.after(obj) : originPlace.before(obj);
 	}
+	checkStatus();
+})
+
+startBtn.addEventListener('click',() => {
+	setGame();
 })
