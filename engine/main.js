@@ -1,5 +1,5 @@
 const  container = document.querySelector(".img-container");
-const  startBtn = document.querySelector(".start-btn")
+const  startBtn = document.querySelector(".start-btn");
 const  gameText = document.querySelector(".game-start");
 const  playTime = document.querySelector(".play-time");
 
@@ -20,11 +20,11 @@ function SetGame() {
 
 function createImgTiles() {
 	const tempArray = [];
-	Array(tileCount).fill().forEach((_, i)=> {
+	Array(tileCount).fill().forEach((_, i) => {
 		const li = document.createElement("li");
 		li.setAttribute('data-index', i);
+		li.setAttribute('draggable', 'true');
 		li.classList.add(`list${i}`);
-		console.log(li);
 		tempArray.push(li);
 	})
 	return tempArray;
@@ -39,3 +39,18 @@ function mix(array) {
 	}
 	return array;
 }
+
+//events
+
+container.addEventListener('dragstart',(e) => {
+	console.log(e);
+})
+
+container.addEventListener('dragover',(e) => {
+	e.preventDefault();
+	console.log('over');
+})
+
+container.addEventListener('drop',(e) => {
+	console.log(e);
+})
